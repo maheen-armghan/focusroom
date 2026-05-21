@@ -1,0 +1,171 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", "Inter", system-ui, sans-serif;
+  --font-display: "Literata", "DM Sans", Georgia, serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 1rem;
+  /* Ambient Focus — warm cream sanctuary */
+  --background: #fef9f1;
+  --foreground: #1d1c17;
+  --card: #ffffff;
+  --card-foreground: #1d1c17;
+  --popover: #ffffff;
+  --popover-foreground: #1d1c17;
+  --primary: #914c02;                 /* amber */
+  --primary-foreground: #ffffff;
+  --secondary: #f2ede5;               /* surface-container */
+  --secondary-foreground: #2C2418;
+  --muted: #ece8e0;
+  --muted-foreground: #544438;
+  --accent: #376848;                  /* forest green */
+  --accent-foreground: #ffffff;
+  --destructive: #ba1a1a;
+  --destructive-foreground: #ffffff;
+  --border: #e7e2da;
+  --input: #f8f3eb;
+  --ring: #914c02;
+  --chart-1: #914c02;
+  --chart-2: #376848;
+  --chart-3: #9a4058;
+  --chart-4: #d4813a;
+  --chart-5: #50808E;
+  --sidebar: #f8f3eb;
+  --sidebar-foreground: #2C2418;
+  --sidebar-primary: #914c02;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ece8e0;
+  --sidebar-accent-foreground: #2C2418;
+  --sidebar-border: #e7e2da;
+  --sidebar-ring: #914c02;
+
+  --gradient-warm: linear-gradient(135deg, #d4813a, #914c02);
+  --gradient-calm: linear-gradient(135deg, #b6ecc3, #376848);
+  --shadow-soft: 0 8px 30px -12px rgba(74, 63, 49, 0.18);
+  --shadow-card: 0 2px 12px -4px rgba(74, 63, 49, 0.10);
+}
+
+.dark {
+  /* Midnight Scholar — warm dark library */
+  --background: #17130e;
+  --foreground: #ebe1d8;
+  --card: #231f19;
+  --card-foreground: #ebe1d8;
+  --popover: #231f19;
+  --popover-foreground: #ebe1d8;
+  --primary: #ffb780;                 /* warm amber glow */
+  --primary-foreground: #4e2600;
+  --secondary: #2e2923;
+  --secondary-foreground: #ebe1d8;
+  --muted: #1f1b16;
+  --muted-foreground: #d9c2b3;
+  --accent: #5cd7eb;
+  --accent-foreground: #00363e;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --border: #3a2e20;
+  --input: #1f1b16;
+  --ring: #ffb780;
+  --chart-1: #ffb780;
+  --chart-2: #9ed3ab;
+  --chart-3: #5cd7eb;
+  --chart-4: #d4813a;
+  --chart-5: #dc758e;
+  --sidebar: #1f1b16;
+  --sidebar-foreground: #ebe1d8;
+  --sidebar-primary: #ffb780;
+  --sidebar-primary-foreground: #2f1400;
+  --sidebar-accent: #2e2923;
+  --sidebar-accent-foreground: #ebe1d8;
+  --sidebar-border: #3a2e20;
+  --sidebar-ring: #ffb780;
+
+  --gradient-warm: linear-gradient(135deg, #ffb780, #d4813a);
+  --gradient-calm: linear-gradient(135deg, #5cd7eb, #376848);
+  --shadow-soft: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 2px 12px -4px rgba(0, 0, 0, 0.4);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+/* === Session entrance & seating animations ===
+   `avatar-enter`  : avatar fades up from below the floor when the user
+                     first joins the room.
+   `avatar-bob`    : gentle idle sway while the user is browsing seats.
+   `sit-down`      : the seated avatar settles into the chair with a tiny
+                     bounce when chair_index changes from null to a seat.
+   `closeup-in`    : the bottom HUD scales/fades in as the close-up reveal. */
+@keyframes avatar-enter {
+  0%   { opacity: 0; transform: translateY(40px) scale(0.85); filter: blur(4px); }
+  60%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes avatar-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+@keyframes sit-down {
+  0%   { transform: translateY(-24px) scale(1.05); opacity: 0.6; }
+  60%  { transform: translateY(4px)   scale(0.96); opacity: 1; }
+  100% { transform: translateY(0)     scale(1);    opacity: 1; }
+}
+@keyframes closeup-in {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.animate-avatar-enter { animation: avatar-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-avatar-bob   { animation: avatar-bob 3.2s ease-in-out infinite; }
+.animate-sit-down     { animation: sit-down 520ms cubic-bezier(0.34, 1.4, 0.64, 1) both; }
+.animate-closeup-in   { animation: closeup-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both; }

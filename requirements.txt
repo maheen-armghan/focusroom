@@ -1,0 +1,41 @@
+# FocusRoom — Python Dependencies
+# Fixed for Python 3.11 / Windows
+# numpy pinned to 1.26.4 — satisfies pandas, scipy, keras, mediapipe all at once
+
+# ── Web server ─────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
+python-socketio>=5.11.0
+aiofiles>=23.0.0
+
+# ── Database & cache ───────────────────────────────────────────────
+redis>=5.0.0
+fakeredis>=2.23.0          # dev-mode Redis replacement (no installation needed)
+sqlalchemy>=2.0.0          # for auth user table
+aiosqlite>=0.20.0          # async SQLite driver (no PostgreSQL needed for MVP)
+
+# ── Auth ───────────────────────────────────────────────────────────
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# ── Config ─────────────────────────────────────────────────────────
+pydantic>=2.7.0
+pydantic-settings>=2.2.0
+python-dotenv>=1.0.0
+
+# ── AI / LLM ───────────────────────────────────────────────────────
+google-generativeai>=0.7.0
+
+# ── ML / Computer Vision ───────────────────────────────────────────
+# numpy pinned <2 — required by pandas 2.2 on Python 3.11
+numpy>=1.26.4,<2.0.0
+tensorflow==2.16.1
+opencv-python-headless>=4.9.0   # headless = no GUI deps, smaller
+mediapipe>=0.10.0
+scikit-learn>=1.3.0
+
+# ── Utilities ──────────────────────────────────────────────────────
+python-slugify>=8.0.0
+loguru>=0.7.0
+httpx>=0.27.0

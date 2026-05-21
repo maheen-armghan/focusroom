@@ -1,0 +1,72 @@
+{
+  "model_path": "checkpoints/best_model.keras",
+  "test_samples": 15646,
+  "class_names": [
+    "focused",
+    "distracted",
+    "closed"
+  ],
+  "test_accuracy": 0.9818,
+  "macro_f1": 0.9563,
+  "target_met": true,
+  "keras_metrics": {
+    "loss": 0.0743,
+    "compile_metrics": 0.9818
+  },
+  "per_class": {
+    "focused": {
+      "precision": 0.9596497906357061,
+      "recall": 0.9350890207715133,
+      "f1-score": 0.9472102198008642,
+      "support": 2696.0
+    },
+    "distracted": {
+      "precision": 0.8784878487848785,
+      "recall": 0.9818913480885312,
+      "f1-score": 0.9273159144893112,
+      "support": 994.0
+    },
+    "closed": {
+      "precision": 0.9963050050386295,
+      "recall": 0.992305118768819,
+      "f1-score": 0.9943010392222594,
+      "support": 11956.0
+    },
+    "accuracy": 0.9817844816566534,
+    "macro avg": {
+      "precision": 0.944814214819738,
+      "recall": 0.9697618292096211,
+      "f1-score": 0.9562757245041449,
+      "support": 15646.0
+    },
+    "weighted avg": {
+      "precision": 0.9825038602510474,
+      "recall": 0.9817844816566534,
+      "f1-score": 0.9819311003788085,
+      "support": 15646.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      2521,
+      135,
+      40
+    ],
+    [
+      14,
+      976,
+      4
+    ],
+    [
+      92,
+      0,
+      11864
+    ]
+  ],
+  "speed_benchmark": {
+    "avg_ms": 167.61,
+    "p95_ms": 260.61,
+    "max_ms": 1227.89,
+    "sla_pass": false
+  }
+}

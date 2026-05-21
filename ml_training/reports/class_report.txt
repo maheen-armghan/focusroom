@@ -1,0 +1,12 @@
+FocusRoom Eye CNN — Evaluation Report
+Generated: 2026-05-18T17:14:20.036089
+
+              precision    recall  f1-score   support
+
+     focused     0.9596    0.9351    0.9472      2696
+  distracted     0.8785    0.9819    0.9273       994
+      closed     0.9963    0.9923    0.9943     11956
+
+    accuracy                         0.9818     15646
+   macro avg     0.9448    0.9698    0.9563     15646
+weighted avg     0.9825    0.9818    0.9819     15646

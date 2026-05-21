@@ -1,0 +1,19 @@
+{
+  "model_name": "FocusRoom_EyeCNN",
+  "input_shape": [
+    32,
+    32,
+    1
+  ],
+  "classes": [
+    "focused",
+    "distracted",
+    "closed"
+  ],
+  "num_classes": 3,
+  "total_params": 162339,
+  "img_size": 32,
+  "colour_mode": "grayscale",
+  "normalisation": "divide_by_255",
+  "exported_at": "2026-05-18T17:14:23.762748"
+}
