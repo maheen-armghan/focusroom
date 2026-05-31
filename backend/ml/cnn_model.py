@@ -88,16 +88,21 @@ def load_model(model_path: str = None):
 
     if p is None or not p.exists():
         log.error(
-            "best_model.keras not found. Copy it to backend/ml/model_weights/ "
-            "or set MODEL_PATH in .env"
+            f"best_model.keras not found at {p}. Copy it to backend/ml/model_weights/ "
+            f"or set MODEL_PATH in .env. Provided model_path={model_path}"
         )
         return
 
     _model_path = p
     log.info(f"Loading model from {p}…")
     t0 = time.time()
-    _model = keras.models.load_model(str(p))
-    log.info(f"Model loaded in {time.time()-t0:.1f}s — img_size={_img_size}")
+    try:
+        _model = keras.models.load_model(str(p))
+        log.info(f"✓ Model loaded in {time.time()-t0:.1f}s — img_size={_img_size}")
+    except Exception as e:
+        log.error(f"Failed to load model: {e}")
+        _model = None
+        return
 
 
 def predict(eye_crop_b64: str) -> dict:

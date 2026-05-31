@@ -29,8 +29,7 @@ class Settings(BaseSettings):
     # ── Redis ─────────────────────────────────────────────────────────────────
     REDIS_URL:       str  = "redis://localhost:6379/0"
 
-    # ── Database (PostgreSQL) ─────────────────────────────────────────────────
-    DATABASE_URL:    str  = "postgresql://user:password@localhost:5432/focusroom"
+    # ── Gemini (chat summary) ─────────────────────────────────────────────────
     GEMINI_API_KEY:  str  = ""
     GEMINI_MODEL:    str  = "gemini-1.5-flash"
 
