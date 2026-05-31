@@ -2,7 +2,6 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,11 +36,14 @@ function SignupPage() {
     navigate({ to: "/dashboard/overview" });
   };
 
-  const handleGoogle = async () => {
-    const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin + "/dashboard/overview" });
-    if (result.error) return toast.error("Could not sign in with Google");
-    if (result.redirected) return;
-    navigate({ to: "/dashboard/overview" });
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:8083/dashboard/overview",
+      },
+    });
+    if (error) toast.error("Could not sign in with Google");
   };
 
   return (
@@ -57,7 +59,7 @@ function SignupPage() {
           <h1 className="font-display text-2xl font-semibold">Create your account</h1>
           <p className="mt-1 text-sm text-muted-foreground">Start studying with friends in seconds.</p>
 
-          <Button onClick={handleGoogle} variant="outline" className="mt-6 w-full">
+          <Button onClick={handleGoogleLogin} variant="outline" className="mt-6 w-full">
             Continue with Google
           </Button>
           <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">

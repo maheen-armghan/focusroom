@@ -25,10 +25,10 @@ interface FocusHUDProps {
 
 /** Colour + label based on focus state */
 function stateStyle(state: string, score: number) {
-  if (state === "closed")     return { color: "#ef4444", label: "Drowsy" };
-  if (state === "distracted") return { color: "#f59e0b", label: "Distracted" };
-  return score >= 70          ? { color: "#22c55e", label: "Focused" }
-                              : { color: "#84cc16", label: "Present" };
+  if (state === "closed")     return { color: "#ef4444", label: "Drowsy 😴" };
+  if (state === "distracted") return { color: "#f59e0b", label: "Distracted 👀" };
+  return score >= 70          ? { color: "#22c55e", label: "Focused ✓" }
+                              : { color: "#f59e0b", label: "Distracted 👀" };
 }
 
 /** Small score badge — rendered on top of each avatar in the iso stage */
@@ -107,10 +107,12 @@ export function FocusHUD({ sessionId, myUserId, myScore, myState, cameraOn }: Fo
 }
 
 /** Returns the score row for a specific user (for use in IsoStage) */
-export function useParticipantScores(sessionId: string) {
+export function useParticipantScores(sessionId?: string) {
   const [scores, setScores] = useState<Record<string, ScoreRow>>({});
 
   useEffect(() => {
+    if (!sessionId) return;
+
     supabase
       .from("focus_scores")
       .select("user_id, score, state")

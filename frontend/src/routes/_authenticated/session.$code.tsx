@@ -7,6 +7,7 @@ import { PixelAvatar, DEFAULT_AVATAR, type AvatarConfig } from "@/components/Pix
 import { LogOut, Copy, Armchair } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "sonner";
+import { SharedSpace } from "@/components/SharedSpace";
 import { SessionChat } from "@/components/SessionChat";
 import cafeImg from "@/assets/room-cafe.jpg";
 import libraryImg from "@/assets/room-library.jpg";
@@ -128,7 +129,7 @@ function SessionPage() {
   } = useEyeCapture({
     sessionId: session?.id ?? "",
     userId: user?.id ?? "",
-    enabled: !!session,
+    enabled: !!session?.id,
   });
   const participantScores = useParticipantScores(session?.id ?? "");
 
@@ -307,15 +308,17 @@ function SessionPage() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="rounded-full bg-black/40 px-4 py-1.5 font-mono text-base tabular-nums backdrop-blur">
+              <div className="rounded-full bg-black/40 px-4 py-1.5 font-mono text-base tabular-nums backdrop-blur">
               {done ? "00:00" : fmt(remaining)}
-              <FocusHUD
-                sessionId={session.id}
-                myUserId={user?.id ?? ""}
-                myScore={score}
-                myState={eyeState}
-                cameraOn={cameraReady}
-              />
+              {session?.id && (
+                <FocusHUD
+                  sessionId={session.id}
+                  myUserId={user?.id ?? ""}
+                  myScore={score}
+                  myState={eyeState}
+                  cameraOn={cameraReady}
+                />
+              )}
             </div>
             <Button
               variant="outline"
@@ -395,6 +398,7 @@ function SessionPage() {
       </div>
 
       {/* Floating chat panel on the right */}
+      <SharedSpace sessionId={session.id} userId={user?.id ?? ""} />
       <SessionChat sessionId={session.id} userId={user?.id} />
     </div>
   );
